@@ -1,0 +1,11 @@
+.title {
+	color: #121214;
+	text-align: center;
+}
+
+.homeImg {
+	width: 500px;
+	height: 500px;
+	display: block;
+	margin: 0 auto;
+}
