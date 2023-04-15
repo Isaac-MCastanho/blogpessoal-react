@@ -1,3 +1,10 @@
+:root {
+	--blue-200: #a5d7e8;
+	--blue-400: #576cbc;
+	--blue-600: #19376d;
+	--blue-900: #0b2447;
+}
+
 * {
 	margin: 0;
 	padding: 0;

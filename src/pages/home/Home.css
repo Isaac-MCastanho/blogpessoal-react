@@ -1,11 +1,6 @@
-.title {
-	color: #121214;
-	text-align: center;
-}
-
-.homeImg {
-	width: 500px;
-	height: 500px;
-	display: block;
+.fotoHome {
+	width: max(350px, 65%);
 	margin: 0 auto;
+	display: block;
+	transform: rotateY(180deg);
 }

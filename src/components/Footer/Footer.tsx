@@ -17,7 +17,8 @@ export function Footer() {
 				<Box
 					display={"flex"}
 					alignItems="center"
-					style={{ backgroundColor: "#232325", height: "120px" }}
+					bgcolor="primary.dark"
+					style={{ height: "120px" }}
 					width={"100%"}
 					justifyContent={"space-around"}
 				>

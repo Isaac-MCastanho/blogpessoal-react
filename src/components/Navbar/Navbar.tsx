@@ -5,10 +5,16 @@ import { Box } from "@mui/material";
 export function Navbar() {
 	return (
 		<>
-			<AppBar position="static" style={{ background: "#232325" }}>
+			<AppBar position="static" color="primary">
 				<Toolbar variant="dense">
+					<input type="" name="" id="" />
 					<Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
-						<Box style={{ cursor: "pointer" }}>
+						<Box
+							borderColor=""
+							bgcolor="primary.dark"
+							color="primaryText"
+							style={{ cursor: "pointer" }}
+						>
 							<Typography variant="h5" color="inherit">
 								BlogPessoal
 							</Typography>
