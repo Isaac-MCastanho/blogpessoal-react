@@ -2,8 +2,8 @@ import React from "react";
 import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import "./Home.css";
-
-function Home() {
+import { TabPosts } from "./../../components/posts/tabPosts/TabPosts";
+export function Home() {
 	return (
 		<>
 			<Grid
@@ -57,10 +57,10 @@ function Home() {
 						className="fotoHome"
 					/>
 				</Grid>
-				<Grid xs={12} style={{ backgroundColor: "white" }}></Grid>
+				<Grid xs={12} style={{ backgroundColor: "white" }}>
+					<TabPosts />
+				</Grid>
 			</Grid>
 		</>
 	);
 }
-
-export default Home;

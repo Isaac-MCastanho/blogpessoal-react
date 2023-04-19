@@ -7,17 +7,16 @@
 
 .linkLogin {
 	text-decoration: underline;
-	color: var(--blue-600);
+}
+
+.MenuItem.Mui-selected {
+	color: red;
 }
 
 .linkLogin:hover {
 	color: var(--blue-900);
 }
 
-.botaolegal {
-	background-color: #f60 !important;
-}
-
 .botaolegal:hover {
-	background-color: rgb(139, 57, 2) !important;
+	filter: brightness(1.1);
 }
