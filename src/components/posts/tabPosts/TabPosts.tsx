@@ -4,7 +4,7 @@ import Tab from "@material-ui/core/Tab";
 import TabContext from "@material-ui/lab/TabContext";
 import TabList from "@material-ui/lab/TabList";
 import TabPanel from "@material-ui/lab/TabPanel";
-import { ListPosts } from "../listPosts/ListPosts";
+import { ListaPostagem } from "../listPosts/ListaPostagem";
 // import "./TabPostagens.css";
 
 import { useTheme } from "../../contexts/theme/ThemeContext";
@@ -36,7 +36,7 @@ export function TabPosts() {
 				</TabList>
 			</AppBar>
 			<TabPanel value="1">
-				<ListPosts />
+				<ListaPostagem />
 			</TabPanel>
 			<TabPanel value="2">
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus

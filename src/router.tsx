@@ -4,9 +4,9 @@ import { Home } from "./pages/home/Home";
 import { Login } from "./pages/login/Login";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Footer } from "./components/Footer/Footer";
-import { ListPosts } from "./components/posts/listPosts/ListPosts";
+import { ListaPostagem } from "./components/posts/listPosts/ListaPostagem";
 
-import { ListTemas } from "./components/temas/listTemas/ListTemas";
+import { ListaTema } from "./components/temas/listTemas/ListaTema";
 import { CadastroUsuario } from "./pages/cadastroUsuarios/CadastroUsuario";
 import { CadastroTema } from "./components/temas/cadastroTema/CadastroTema";
 
@@ -19,12 +19,12 @@ export function Router() {
 					<Route path="/" element={<Login />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/home" element={<Home />} />
-					<Route path="/temas" element={<ListTemas />} />
+					<Route path="/temas" element={<ListaTema />} />
 
 					<Route path="/cadastrarUsuario" element={<CadastroUsuario />} />
 					<Route path="/cadastrarTemas" element={<CadastroTema />} />
 
-					<Route path="/postagens" element={<ListPosts />} />
+					<Route path="/postagens" element={<ListaPostagem />} />
 				</Routes>
 			</div>
 			<Footer />

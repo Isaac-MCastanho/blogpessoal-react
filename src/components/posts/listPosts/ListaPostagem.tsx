@@ -11,7 +11,7 @@ import { Postagem } from "../../../models/Postagem";
 import { getAll } from "../../../services/Service";
 import useLocalStorage from "react-use-localstorage";
 
-export function ListPosts() {
+export function ListaPostagem() {
 	const [posts, setPosts] = useState<Postagem[]>([]);
 	const [isLoad, setIsLoad] = useState(false);
 	const [token, setToken] = useLocalStorage("token");
@@ -38,7 +38,7 @@ export function ListPosts() {
 			{posts &&
 				posts.map((post) => {
 					return (
-						<Box m={4}>
+						<Box m={4} key={post.id}>
 							<Card>
 								<CardContent>
 									<Typography color="textSecondary" gutterBottom>

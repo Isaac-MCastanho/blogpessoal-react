@@ -12,7 +12,7 @@ import { getAll } from "../../../services/Service";
 import useLocalStorage from "react-use-localstorage";
 import { useNavigate } from "react-router-dom";
 
-export function ListTemas() {
+export function ListaTema() {
 	const [temas, setTemas] = useState<Tema[]>([]);
 	const [isLoad, setIsLoad] = useState(false);
 	const [token, setToken] = useLocalStorage("token");
