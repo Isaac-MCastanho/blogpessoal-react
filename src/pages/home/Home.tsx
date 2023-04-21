@@ -11,7 +11,7 @@ export function Home() {
 				direction="row"
 				justifyContent="center"
 				alignItems="center"
-				style={{ backgroundColor: "var(--blue-600)" }}
+				style={{ backgroundColor: "#6B7C65" }}
 			>
 				<Grid alignItems="center" item xs={6}>
 					<Box paddingX={20}>

@@ -6,30 +6,69 @@ import {
 	CardContent,
 	Typography,
 } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Tema } from "../../../models/Tema";
+import { getAll } from "../../../services/Service";
+import useLocalStorage from "react-use-localstorage";
+import { useNavigate } from "react-router-dom";
 
 export function ListTemas() {
+	const [temas, setTemas] = useState<Tema[]>([]);
+	const [isLoad, setIsLoad] = useState(false);
+	const [token, setToken] = useLocalStorage("token");
+	const history = useNavigate();
+
+	async function getAllTemas() {
+		await getAll("/temas", setTemas, {
+			headers: {
+				Authorization: token,
+			},
+		}).finally(() => {
+			setIsLoad(false);
+		});
+	}
+
+	useEffect(() => {
+		setIsLoad(true);
+		getAllTemas();
+	}, []);
+
+	useEffect(() => {
+		if (token === "") {
+			alert("Sem acesso!");
+			history("/login");
+		}
+	}, []);
+
 	return (
-		<>
-			<Box m={4}>
-				<Card>
-					<CardContent>
-						<Typography color="textSecondary" gutterBottom>
-							Tema:
-						</Typography>
-						<Typography variant="h5" component="h2">
-							descrição do tema
-						</Typography>
-					</CardContent>
-					<CardActions>
-						<Button color="primary" variant="contained" size="small">
-							Editar
-						</Button>
-						<Button color="secondary" variant="contained" size="small">
-							Deletar
-						</Button>
-					</CardActions>
-				</Card>
-			</Box>
-		</>
+		<div style={{ paddingTop: "100px" }}>
+			{isLoad && temas.length == 0 && <p>Carregando...</p>}
+			{!isLoad && temas.length == 0 && <p>Não há Postagens!</p>}
+			{temas &&
+				temas.map((tema) => {
+					return (
+						<Box m={4} key={tema.id}>
+							<Card>
+								<CardContent>
+									<Typography color="textSecondary" gutterBottom>
+										Tema:
+									</Typography>
+									<Typography variant="h5" component="h2">
+										{tema.descricao}
+									</Typography>
+								</CardContent>
+								<CardActions>
+									<Button color="primary" variant="contained" size="small">
+										Editar
+									</Button>
+									<Button color="secondary" variant="contained" size="small">
+										Deletar
+									</Button>
+								</CardActions>
+							</Card>
+						</Box>
+					);
+				})}
+		</div>
 	);
 }

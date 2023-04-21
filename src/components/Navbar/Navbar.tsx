@@ -1,17 +1,24 @@
+import { useState } from "react";
 import "./Navbar.css";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ThemeActions, useTheme } from "../contexts/theme/ThemeContext";
+import Logo from "../../assets/img/The_Green001.png";
 
 import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { useState } from "react";
+import useLocalStorage from "react-use-localstorage";
 
 export function Navbar() {
+	const [token, setToken] = useLocalStorage("token");
 	const [checked, setChecked] = useState(false);
 	const { state: themeContext, dispatch } = useTheme();
+
+	const logout = () => {
+		setToken("");
+	};
 
 	const toggleChecked = () => {
 		setChecked((prev) => !prev);
@@ -33,7 +40,12 @@ export function Navbar() {
 					<Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
 						<Box style={{ cursor: "pointer" }}>
 							<Typography variant="h5" color="inherit">
-								BlogPessoal
+								<img
+									src={Logo}
+									alt=""
+									className="logo"
+									style={{ maxWidth: "100px" }}
+								/>
 							</Typography>
 						</Box>
 
@@ -64,7 +76,7 @@ export function Navbar() {
 								</Box>
 							</Link>
 
-							<Link to="/temas">
+							<Link to="/cadastrartemas">
 								<Box
 									display="inherit"
 									alignItems="center"
@@ -78,7 +90,7 @@ export function Navbar() {
 							</Link>
 
 							<Box display="inherit" alignItems="center" mx={1}>
-								<Link to="/login">
+								<Link onClick={logout} to="/login">
 									<Typography variant="h6" color="inherit">
 										Logout
 									</Typography>

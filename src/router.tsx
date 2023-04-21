@@ -8,6 +8,7 @@ import { ListPosts } from "./components/posts/listPosts/ListPosts";
 
 import { ListTemas } from "./components/temas/listTemas/ListTemas";
 import { CadastroUsuario } from "./pages/cadastroUsuarios/CadastroUsuario";
+import { CadastroTema } from "./components/temas/cadastroTema/CadastroTema";
 
 export function Router() {
 	return (
@@ -21,6 +22,7 @@ export function Router() {
 					<Route path="/temas" element={<ListTemas />} />
 
 					<Route path="/cadastrarUsuario" element={<CadastroUsuario />} />
+					<Route path="/cadastrarTemas" element={<CadastroTema />} />
 
 					<Route path="/postagens" element={<ListPosts />} />
 				</Routes>

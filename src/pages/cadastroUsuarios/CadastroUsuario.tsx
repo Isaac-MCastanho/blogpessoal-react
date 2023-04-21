@@ -4,8 +4,10 @@ import { Box, Typography, Button, Grid, TextField } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../../models/User";
 import { cadastrarUsuario } from "../../services/Service";
+import useLocalStorage from "react-use-localstorage";
 
 export function CadastroUsuario() {
+	const [token, setToken] = useLocalStorage("token");
 	const history = useNavigate();
 
 	const [usuario, setUsuario] = useState<User>({
@@ -40,6 +42,7 @@ export function CadastroUsuario() {
 	async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
 		event.preventDefault();
 
+		console.log("aki");
 		if (confirmarSenha === usuario.senha) {
 			try {
 				await cadastrarUsuario(
@@ -70,6 +73,12 @@ export function CadastroUsuario() {
 	const back = () => {
 		history("/login");
 	};
+
+	useEffect(() => {
+		if (token !== "") {
+			history("/home");
+		}
+	}, [token]);
 
 	return (
 		<>
