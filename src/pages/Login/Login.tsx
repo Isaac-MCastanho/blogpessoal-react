@@ -2,18 +2,24 @@ import React, { ChangeEvent, useEffect } from "react";
 import "./Login.css";
 import { Box, Typography, Button, Grid, TextField } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "../../components/contexts/theme/ThemeContext";
+import { useTheme } from "../../contexts/theme/ThemeContext";
 import { useState } from "react";
 import useLocalStorage from "react-use-localstorage";
 import { UserLogin } from "../../models/UserLogin";
 import { login } from "../../services/Service";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../store/tokens/action";
 
 export function Login() {
+	const [isLoading, setIsLoading] = useState(false);
+
 	const { state: themeContext } = useTheme();
 
 	const history = useNavigate();
 
-	const [token, setToken] = useLocalStorage("token");
+	const dispatch = useDispatch();
+
+	const [token, setToken] = useState("");
 
 	const [usuarioLogin, setUserLogin] = useState<UserLogin>({
 		id: 0,
@@ -35,17 +41,18 @@ export function Login() {
 		event.preventDefault();
 
 		try {
-			console.log("ola");
+			setIsLoading(true);
 			await login("/usuarios/logar", usuarioLogin, setToken);
 			alert("Usuario logado com sucesso");
 		} catch (error) {
-			console.log(error);
+			setIsLoading(false);
 			alert("Usuário ou senha inválidos");
 		}
 	}
 
 	useEffect(() => {
 		if (token !== "") {
+			dispatch(addToken(token));
 			history("/home");
 		}
 	}, [token]);
@@ -108,10 +115,14 @@ export function Login() {
 										fullWidth
 										style={{
 											color: themeContext.button.primary.text,
-											background: themeContext.button.primary.bg,
+											background: themeContext.button.primary.bgHover,
 										}}
 									>
-										Logar
+										{isLoading ? (
+											<span className="loaderLogin"></span>
+										) : (
+											"Logar"
+										)}
 									</Button>
 								</Box>
 							</form>

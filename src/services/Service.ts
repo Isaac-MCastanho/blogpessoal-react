@@ -35,6 +35,15 @@ export const getAll = async (
 	setDados(resposta.data);
 };
 
+export const getId = async (
+	url: string,
+	setDados: Function,
+	headers: Object
+) => {
+	const resposta = await api.get(url, headers);
+	setDados(resposta.data);
+};
+
 export const post = async (
 	url: string,
 	dados: Object,
@@ -55,4 +64,8 @@ export const put = async (
 	const resposta = await api.put(url, dados, headers);
 
 	setDados(resposta.data);
+};
+
+export const deleteId = async (url: string, headers: Object) => {
+	await api.delete(url, headers);
 };

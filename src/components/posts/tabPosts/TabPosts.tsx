@@ -7,7 +7,7 @@ import TabPanel from "@material-ui/lab/TabPanel";
 import { ListaPostagem } from "../listPosts/ListaPostagem";
 // import "./TabPostagens.css";
 
-import { useTheme } from "../../contexts/theme/ThemeContext";
+import { useTheme } from "../../../contexts/theme/ThemeContext";
 
 export function TabPosts() {
 	const { state: themeContext } = useTheme();
@@ -23,7 +23,7 @@ export function TabPosts() {
 			<AppBar
 				position="static"
 				className="barrinha"
-				style={{ color: "#fcfcfc", background: themeContext.bg.primary }}
+				style={{ color: "#000", background: themeContext.bg.primary }}
 			>
 				<TabList
 					centered

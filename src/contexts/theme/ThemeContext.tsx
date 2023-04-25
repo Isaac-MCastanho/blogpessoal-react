@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, ReactNode } from "react";
-import { Theme } from "../../../themes/themeTypes";
-import { darkMode, lightMode } from "../../../themes/themes";
+import { Theme } from "./../../themes/themeTypes";
+import { darkMode, lightMode } from "./../../themes/themes";
 
 type ContextType = {
 	state: Theme;

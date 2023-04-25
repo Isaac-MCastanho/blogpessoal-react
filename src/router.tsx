@@ -22,7 +22,8 @@ export function Router() {
 					<Route path="/temas" element={<ListaTema />} />
 
 					<Route path="/cadastrarUsuario" element={<CadastroUsuario />} />
-					<Route path="/cadastrarTemas" element={<CadastroTema />} />
+					<Route path="/cadastrarTema" element={<CadastroTema />} />
+					<Route path="/editarTema/:id" element={<CadastroTema />} />
 
 					<Route path="/postagens" element={<ListaPostagem />} />
 				</Routes>

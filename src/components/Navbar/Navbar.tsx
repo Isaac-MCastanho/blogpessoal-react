@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import { ThemeActions, useTheme } from "../contexts/theme/ThemeContext";
+import { ThemeActions, useTheme } from "../../contexts/theme/ThemeContext";
 import Logo from "../../assets/img/The_Green001.png";
 
 import Switch from "@material-ui/core/Switch";
@@ -76,7 +76,7 @@ export function Navbar() {
 								</Box>
 							</Link>
 
-							<Link to="/cadastrartemas">
+							<Link to="/cadastrartema">
 								<Box
 									display="inherit"
 									alignItems="center"

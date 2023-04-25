@@ -10,11 +10,19 @@ import {
 import { Postagem } from "../../../models/Postagem";
 import { getAll } from "../../../services/Service";
 import useLocalStorage from "react-use-localstorage";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { useNavigate } from "react-router-dom";
 
 export function ListaPostagem() {
 	const [posts, setPosts] = useState<Postagem[]>([]);
-	const [isLoad, setIsLoad] = useState(false);
-	const [token, setToken] = useLocalStorage("token");
+	const [isLoading, setIsLoading] = useState(false);
+
+	const history = useNavigate();
+
+	const token = useSelector<TokenState, TokenState["token"]>(
+		(state) => state.token
+	);
 
 	async function getAllPosts() {
 		await getAll("/postagens", setPosts, {
@@ -22,19 +30,25 @@ export function ListaPostagem() {
 				Authorization: token,
 			},
 		}).finally(() => {
-			setIsLoad(false);
+			setIsLoading(false);
 		});
 	}
+	useEffect(() => {
+		if (token === "") {
+			alert("Sem acesso!");
+			history("/login");
+		}
+	}, []);
 
 	useEffect(() => {
-		setIsLoad(true);
+		setIsLoading(true);
 		getAllPosts();
 	}, []);
 
 	return (
 		<>
-			{isLoad && posts.length == 0 && <p>Carregando...</p>}
-			{!isLoad && posts.length == 0 && <p>Não há Postagens!</p>}
+			{isLoading && posts.length == 0 && <p>Carregando...</p>}
+			{!isLoading && posts.length == 0 && <p>Não há Postagens!</p>}
 			{posts &&
 				posts.map((post) => {
 					return (

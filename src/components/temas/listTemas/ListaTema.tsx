@@ -10,12 +10,17 @@ import { useEffect, useState } from "react";
 import { Tema } from "../../../models/Tema";
 import { getAll } from "../../../services/Service";
 import useLocalStorage from "react-use-localstorage";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useStore } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 export function ListaTema() {
 	const [temas, setTemas] = useState<Tema[]>([]);
 	const [isLoad, setIsLoad] = useState(false);
-	const [token, setToken] = useLocalStorage("token");
+	// const [token, setToken] = useLocalStorage("token");
+	const token = useSelector<TokenState, TokenState["token"]>(
+		(state) => state.token
+	);
 	const history = useNavigate();
 
 	async function getAllTemas() {
@@ -58,12 +63,16 @@ export function ListaTema() {
 									</Typography>
 								</CardContent>
 								<CardActions>
-									<Button color="primary" variant="contained" size="small">
-										Editar
-									</Button>
-									<Button color="secondary" variant="contained" size="small">
-										Deletar
-									</Button>
+									<Link to={`/editarTema/${tema.id}`}>
+										<Button color="primary" variant="contained" size="small">
+											Editar
+										</Button>
+									</Link>
+									<Link to={`/deletarTema/${tema.id}`}>
+										<Button color="secondary" variant="contained" size="small">
+											Deletar
+										</Button>
+									</Link>
 								</CardActions>
 							</Card>
 						</Box>
