@@ -12,7 +12,7 @@ import { getAll } from "../../../services/Service";
 import useLocalStorage from "react-use-localstorage";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function ListaPostagem() {
 	const [posts, setPosts] = useState<Postagem[]>([]);
@@ -52,7 +52,7 @@ export function ListaPostagem() {
 			{posts &&
 				posts.map((post) => {
 					return (
-						<Box m={4} key={post.id}>
+						<Box m={4} paddingTop={10} key={post.id}>
 							<Card>
 								<CardContent>
 									<Typography color="textSecondary" gutterBottom>
@@ -69,9 +69,11 @@ export function ListaPostagem() {
 									<Button color="primary" variant="contained" size="small">
 										Editar
 									</Button>
-									<Button color="secondary" variant="contained" size="small">
-										Deletar
-									</Button>
+									<Link to={`/deletarPostagem/${post.id}`}>
+										<Button color="secondary" variant="contained" size="small">
+											Deletar
+										</Button>
+									</Link>
 								</CardActions>
 							</Card>
 						</Box>

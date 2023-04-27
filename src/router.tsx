@@ -13,6 +13,7 @@ import { CadastroTema } from "./components/temas/cadastroTema/CadastroTema";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTheme } from "./contexts/theme/ThemeContext";
+import DeletarPostagem from "./components/posts/deletarPosts/DeletarPostagem";
 
 export function Router() {
 	const { state: themeContext } = useTheme();
@@ -44,6 +45,7 @@ export function Router() {
 					<Route path="/editarTema/:id" element={<CadastroTema />} />
 
 					<Route path="/postagens" element={<ListaPostagem />} />
+					<Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
 				</Routes>
 			</div>
 			<Footer />

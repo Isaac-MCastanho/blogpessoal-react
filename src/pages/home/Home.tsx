@@ -3,6 +3,7 @@ import { Typography, Grid, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import "./Home.css";
 import { TabPosts } from "./../../components/posts/tabPosts/TabPosts";
+import { Link } from "react-router-dom";
 export function Home() {
 	return (
 		<>
@@ -38,16 +39,18 @@ export function Home() {
 					</Box>
 					<Box display="flex" justifyContent="center">
 						<Box marginRight={1}></Box>
-						<Button
-							variant="outlined"
-							style={{
-								borderColor: "white",
-								backgroundColor: "var(--blue-600)",
-								color: "white",
-							}}
-						>
-							Ver Postagens
-						</Button>
+						<Link to={"/postagens"}>
+							<Button
+								variant="outlined"
+								style={{
+									borderColor: "white",
+									backgroundColor: "var(--blue-600)",
+									color: "white",
+								}}
+							>
+								Ver Postagens
+							</Button>
+						</Link>
 					</Box>
 				</Grid>
 				<Grid item xs={6}>
