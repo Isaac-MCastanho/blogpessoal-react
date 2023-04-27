@@ -10,9 +10,27 @@ import { ListaTema } from "./components/temas/listTemas/ListaTema";
 import { CadastroUsuario } from "./pages/cadastroUsuarios/CadastroUsuario";
 import { CadastroTema } from "./components/temas/cadastroTema/CadastroTema";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useTheme } from "./contexts/theme/ThemeContext";
+
 export function Router() {
+	const { state: themeContext } = useTheme();
+
 	return (
 		<BrowserRouter>
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme={themeContext.dark ? "dark" : "light"}
+			/>
 			<Navbar />
 			<div style={{ minHeight: "85vh" }}>
 				<Routes>

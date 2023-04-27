@@ -3,7 +3,9 @@ export type Action = {
 	payload: string;
 };
 
-export const addToken = (token: string): Action => ({
-	type: "ADD_TOKEN",
-	payload: token,
-});
+export function addToken(token: string): Action {
+	return {
+		type: "ADD_TOKEN",
+		payload: token,
+	};
+}

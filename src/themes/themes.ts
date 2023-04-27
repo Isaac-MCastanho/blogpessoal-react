@@ -1,6 +1,6 @@
+import { ThemeActions } from "./../contexts/theme/ThemeContext";
 import { Theme } from "./themeTypes";
 import { zinc, emerald } from "./colors";
-import { ThemeActions } from "../components/contexts/theme/ThemeContext";
 
 export const lightMode: Theme = {
 	dark: false,

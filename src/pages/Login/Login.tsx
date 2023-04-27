@@ -9,6 +9,7 @@ import { UserLogin } from "../../models/UserLogin";
 import { login } from "../../services/Service";
 import { useDispatch } from "react-redux";
 import { addToken } from "../../store/tokens/action";
+import { toast } from "react-toastify";
 
 export function Login() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -43,10 +44,30 @@ export function Login() {
 		try {
 			setIsLoading(true);
 			await login("/usuarios/logar", usuarioLogin, setToken);
-			alert("Usuario logado com sucesso");
+			// alert("Usuario logado com sucesso");
+			toast.success("Usuario logado com sucesso", {
+				position: "top-right",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: themeContext.dark ? "dark" : "colored",
+			});
 		} catch (error) {
 			setIsLoading(false);
-			alert("Usuário ou senha inválidos");
+			// alert("Usuário ou senha inválidos");
+			toast.error("Usuário ou senha inválidos", {
+				position: "top-right",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: themeContext.dark ? "dark" : "colored",
+			});
 		}
 	}
 

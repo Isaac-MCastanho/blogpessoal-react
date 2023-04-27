@@ -25,6 +25,7 @@ export function CadastroTema() {
 			...tema,
 			[event.target.name]: event.target.value,
 		});
+		console.log(tema.descricao);
 	}
 
 	async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
@@ -57,17 +58,20 @@ export function CadastroTema() {
 		}
 	}
 
-	const getTemaById = async () => {
+	const getTemaById = async (id: string) => {
 		await getId(`/temas/${id}`, setTema, {
-			Authorization: token,
+			headers: {
+				Authorization: token,
+			},
 		});
 	};
 
 	useEffect(() => {
 		if (id !== undefined) {
-			getTemaById();
+			getTemaById(id);
+			console.log("errr");
 		}
-	});
+	}, []);
 
 	useEffect(() => {
 		if (token === "") {
