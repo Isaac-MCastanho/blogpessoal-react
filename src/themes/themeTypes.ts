@@ -1,4 +1,4 @@
-import { ThemeActions } from "../components/contexts/theme/ThemeContext";
+import { ThemeActions } from "./../contexts/theme/ThemeContext";
 
 export type Theme = {
 	dark: true | false;
