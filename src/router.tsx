@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/home/Home";
-import { Login } from "./pages/login/Login";
+import { Login } from "./pages/Login/Login";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Footer } from "./components/Footer/Footer";
 import { ListaPostagem } from "./components/posts/listPosts/ListaPostagem";
